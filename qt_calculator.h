@@ -2,12 +2,10 @@
 #define QT_CALCULATOR_H
 
 #include <QWidget>
-
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class Qt_calculator;
-}
-QT_END_NAMESPACE
+#include <QLineEdit>
+#include <QPushButton>
+#include <QGridLayout>
+#include <QString>
 
 class Qt_calculator : public QWidget
 {
@@ -16,8 +14,23 @@ class Qt_calculator : public QWidget
 public:
     Qt_calculator(QWidget *parent = nullptr);
     ~Qt_calculator();
+private slots:
+    void digitClicked();
+    void operatorClicked();
+    void equalClicked();
+    void clearClicked();
+    void backspaceClicked();
+    void decimalClicked();
 
 private:
-    Ui::Qt_calculator *ui;
+    void createUI();
+    QPushButton* createButton(const QString &text, const char* slot);
+
+    QLineEdit *display;
+    QString currentNumber;
+    QString operand1;
+    QString currentOperator;
+    bool waitingForOperand;
+
 };
 #endif // QT_CALCULATOR_H

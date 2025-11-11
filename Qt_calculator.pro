@@ -15,8 +15,7 @@ SOURCES += \
 HEADERS += \
     qt_calculator.h
 
-FORMS += \
-    qt_calculator.ui
+FORMS +=
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
